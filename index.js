@@ -82,7 +82,9 @@ const getTourByID = async (req, res) => {
 };
 const updateTour = async (req, res) => {
   try {
-    const tour = await Tour.findByIdAndUpdate(req.body);
+    const tour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
+      new: true
+    });
     res.status(200).json({
       status: "success",
       data: tour
